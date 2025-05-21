@@ -1,0 +1,21 @@
+================== Manual uso ====================
+ejecutar servidor python --> .\app\app.py
+
+--> jinja 2 , usa flask; ejemplo <h1>{{data}}</h1> ;;
+
+
+========== ejemplos =============
+url --> http://127.0.0.1:5000/contacto/rogerio/28
+
+--QueryString--
+--> http://127.0.0.1:5000/query_string
+
+
+
+=== INSTALAR mySQL =====
+
+pip install flask-mysqldb
+
+==== PHPmyAdmin ====
+
+http://localhost/phpmyadmin/index.php?route=/server/databases XAMP
