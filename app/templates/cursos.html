@@ -1,0 +1,58 @@
+{% extends './layout.html' %}
+{% block title %} {{ titulo }} {% endblock %}
+
+{% block body %}
+<h1>Listado de Cursos</h1>
+<section>
+    <h3>Ordenar tabla</h3>
+    <form method="get" action="{{ url_for('cursos_html') }}">
+        <button type="submit" name="order" value="nombre">Orden Alfabético</button>
+        <button type="submit" name="order" value="codigo">Ordenar por Código</button>
+        <button type="submit" name="order" value="creditos">Ordenar por Créditos</button>
+    </form>
+
+
+</section>
+<table>
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Créditos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{curso[0]}}</td> <!--Codigo-->
+            <td>{{curso[1]}}</td> <!--Nombre-->
+            <td>{{curso[2]}}</td> <!--Créditos-->
+            <td>
+                <!--Tiene que estar dentro del bucle for-->
+                <p>Eliminar</p>
+                <form action="{{url_for('eliminar_curso', codigo=curso[0]) }}" method="post"
+                    onsubmit="return confirm('¿Seguro que quieres eliminar este curso?')">
+                    <button type="submit">Eliminar</button>
+
+                </form>
+            </td>
+            <td>
+                <p>Acutalizar nombre</p>
+                <form action="{{url_for('actualizar_curso', codigo=curso[0]) }}" method="post">
+                    <input type="text" name="nombre" value="{{ curso[1] }}" required>
+            </td>
+            <td>
+                <p>Actualizar creditos</p>
+                <input type="number" name="creditos" value="{{ curso[2] }}" required>
+            </td>
+            <td>
+                <button type="submit">Actualizar</button>
+            </td>
+            </form>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

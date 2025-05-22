@@ -10,8 +10,19 @@
 </head>
 
 <body>
-    {% block body %}
-    {% endblock %}
+
+    <header>
+        <div class="nav">
+            <a href="{{ url_for('contacto', nombre='Invitado', edad=20) }}">Contacto</a>
+            <a href="{{ url_for('index') }}">Index</a>
+            <a href="{{ url_for('cursos_html') }}">Cursos</a>
+        </div>
+        <div class="logo">IMG</div>
+    </header>
+    <main>
+        {% block body %}
+        {% endblock %}
+    </main>
 
 
     <script src="{{ url_for('static', filename='js/layout.js') }}"></script>
